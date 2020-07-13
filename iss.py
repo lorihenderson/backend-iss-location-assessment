@@ -20,7 +20,6 @@ def get_info():
 def number_of_astronauts_in_space():
     """Returns the number of astronauts in space."""
     r = requests.get(api_url + "/astros.json")
-
     return r.json()["number"]
 
 
@@ -39,21 +38,21 @@ def iss_map(lat, lon):
     # create turtle.Turtle() to move the ISS to its current position
         # methods to use: shape(), setheading(), penup(), goto()
     screen = turtle.Screen()
-    screen.setup(width=600, height=400, startx=200, starty=200) # keep on screen
+    screen.setup(720, 360)
     screen.bgpic(world_map)
     screen.setworldcoordinates(-180, -90, 180, 90)
 
     screen.register_shape(iss_satelite)
     iss = turtle.Turtle()
     iss.shape(iss_satelite)
-    iss.setheading(90) # what goes here?  angle
+    iss.setheading(90)
     iss.penup()
-    iss.goto(lon, lat) # x, y  insert coords
+    iss.goto(lon, lat)
 
     location = turtle.Turtle()
     location.penup()
     location.color("yellow")
-    location.goto(39.76691,-86.14996)
+    location.goto(-86.14996,39.76691)
     location.dot(5)
     next_time = passover(39.76691,-86.14996)
     location.write(next_time, align="center", font={"Arial", 14, "normal"})
